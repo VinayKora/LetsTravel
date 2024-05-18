@@ -1,0 +1,37 @@
+section {
+	display: flex;
+	justify-content: center;
+	align-items: center; /* Align items in the center vertically */
+	height: 100vh; /* Set the section height to be equal to the viewport height */
+	min-height: 100vh;
+	overflow-y: hidden;
+}
+
+
+section div {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 80%;
+	height: auto;
+}
+
+section div img {
+	width: 25%; /* Adjust the width to fit 3 images in a row (100% / 3) */
+	height: auto;
+	object-fit:cover;
+	margin: 1%;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media (max-width: 768px) {
+	section div img {
+		width: 50%; /* Adjust the width to fit 2 images in a row (100% / 2) */
+	}
+}
+
+@media (max-width: 480px) {
+	section div img {
+		width: 100%; /* Each image takes full width on very small screens */
+	}
+}

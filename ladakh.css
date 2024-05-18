@@ -1,0 +1,32 @@
+
+p {
+    font-size: 22px;
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+  color: #000; /* Text color */
+  padding: 10px; /* Space inside the box */
+  width: auto; /* Auto width based on content */
+  margin: 10px; /* Margin around the paragraph */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Adds shadow for styling */
+}
+img {
+    width: 30%; /* Each image will take up 30% of the container's width */
+    height: auto; /* Maintain the aspect ratio */
+    margin: 1.5%; /* Add some space around the images */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Optional: Adds shadow for styling */
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+    img {
+        width: 48%; /* Two images per row on smaller screens */
+        margin: 1%; /* Adjust margin to fit two images */
+    }
+}
+
+/* Responsive layout for very small screens */
+@media (max-width: 480px) {
+    img {
+        width: 98%; /* Full width for very small screens, one image per row */
+        margin: 1%; /* Adjust margin for single image */
+    }
+}

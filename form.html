@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Inquiry Form</title>
+  <link rel="stylesheet" href="./form.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>Travel Inquiry Form</h2>
+    <form action="travel.php" method="post">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+          <option value="prefer_not_to_say">Prefer not to say</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="location">Current Location:</label>
+        <input type="text" id="location" name="location" required>
+      </div>
+
+      <div class="form-group">
+        <label for="trip">Interested in Which Trip:</label>
+        <input type="text" id="trip" name="trip" required>
+      </div>
+
+      <div class="form-group">
+        <label for="queries">Any Queries:</label>
+        <textarea id="queries" name="queries"></textarea>
+      </div>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+</body>
+</html>
