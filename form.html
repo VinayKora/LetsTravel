@@ -5,11 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Travel Inquiry Form</title>
   <link rel="stylesheet" href="./form.css">
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("YOUR_EMAILJS_USER_ID"); // Replace with your EmailJS user ID
+    })();
+  </script>
 </head>
 <body>
   <div class="form-container">
     <h2>Travel Inquiry Form</h2>
-    <form action="travel.php" method="post">
+    <form id="travel-form">
       <div class="form-group">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
@@ -22,7 +28,7 @@
 
       <div class="form-group">
         <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" name="phone" required>
+        <input type="tel" id="phone" name="phone" pattern="\d{10}" title="Please enter a 10-digit phone number" required>
       </div>
 
       <div class="form-group">
@@ -58,5 +64,49 @@
       <input type="submit" value="Submit">
     </form>
   </div>
+
+  <script>
+    document.getElementById('phone').addEventListener('input', function(e) {
+      // Remove non-digit characters
+      this.value = this.value.replace(/\D/g, '');
+    });
+
+    document.getElementById('travel-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Validate phone number length
+      const phoneInput = document.getElementById('phone');
+      if (phoneInput.value.length !== 10) {
+        alert('Phone number must be 10 digits long');
+        return;
+      }
+
+      // Validate email format
+      const emailInput = document.getElementById('email');
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailPattern.test(emailInput.value)) {
+        alert('Please enter a valid email address');
+        return;
+      }
+
+      // Collect form data
+      const formData = new FormData(this);
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+
+      // Send email using EmailJS
+      emailjs.send("vinayTravel", "template_16ykutl", data)
+        .then(response => {
+          console.log('SUCCESS!', response.status, response.text);
+          alert('Your form has been submitted');
+          window.location.href = 'index.html';
+        }, error => {
+          console.error('FAILED...', error);
+          alert('There was a problem with the submission');
+        });
+    });
+  </script>
 </body>
 </html>
